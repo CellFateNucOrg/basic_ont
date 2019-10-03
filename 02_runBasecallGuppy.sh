@@ -19,7 +19,6 @@
 ## pycoQC is run and results are in ./qc/
 
 source ./varSettings.sh
-WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "working directory is: "${WORK_DIR}
 source ${CONDA_ACTIVATE} BASIC_ONT
 
@@ -38,7 +37,7 @@ qcDir=./qc
 mkdir -p $qcDir
 
 #https://github.com/a-slide/pycoQC
-pycoQC -f ${WORK_DIR}/fastqFiles/sequencing_summary.txt -o ${qcDir}/pycoQC_${expName}_pass.html --title ""${expName}" passed reads" --min_pass_qual 3
+pycoQC -f ${WORK_DIR}/fastqFiles/sequencing_summary.txt -o ${qcDir}/pycoQC_${expName}_pass.html --title "${expName} passed reads" --min_pass_qual 3
 
 conda deactivate
 
