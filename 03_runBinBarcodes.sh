@@ -1,8 +1,6 @@
 #! /bin/bash
 
 ## Allocate resources
-#SBATCH --mail-type=end,fail
-#SBATCH --mail-user=jennifer.semple@izb.unibe.ch
 #SBATCH --time=5-00:00:00
 #SBATCH --partition=all
 #SBATCH --gres=gpu:1

@@ -15,6 +15,8 @@
 # read in the run specific settings
 source ./varSettings.sh
 
+source ${CONDA_ACTIVATE} BASIC_ONT
+
 let i=$SLURM_ARRAY_TASK_ID-1
 
 # take one barcode accessed using that array task number for better parallelisation
