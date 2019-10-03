@@ -3,7 +3,7 @@
 ## Allocate resources
 #SBATCH --time=8-00:00:00
 #SBATCH --partition=all
-#SBATCH --mem-per-cpu=16G
+#SBATCH --mem-per-cpu=24G
 #SBATCH --cpus-per-task=8
 
 ## job name
