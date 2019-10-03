@@ -10,4 +10,10 @@ multiFast5_DIR=${WORK_DIR}/multi_fast5
 singleFast5_DIR=${WORK_DIR}/single_fast5
 fastq_DIR=${WORK_DIR}/fastq
 bcfastq_DIR=${WORK_DIR}/bcfastq
+bam_DIR=${WORK_DIR}/bam
 
+# location of genome file for alignment
+genomeFile=/mnt/imaging.data/pmeister/ce11/genome.fa
+
+# list of barcodes that were used in this run
+barcodesUsed=( barcode01 barcode02 )
