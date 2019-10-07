@@ -3,7 +3,7 @@
 ## Allocate resources
 #SBATCH --time=2-00:00:00
 #SBATCH --mem-per-cpu=8G
-#SBATCH --array=1-2
+#SBATCH --array=1-4
 #SBATCH --mail-user=jennifer.semple@izb.unibe.ch
 #SBATCH --mail-type=END,FAIL
 ## you should submit as many jobs as there are barcodes in barcodesUsed
@@ -32,8 +32,8 @@ echo "aligning to genome..."
 mkdir -p ${bam_DIR}/
 
 # map reads to genome with minimap2
-# filter reads with flag=2308: unmapped (4) + secondary alignment (256) + supplementary alignment (2048) [the latter category is the main problem]
-minimap2 -ax map-ont $genomeFile ${bcFastq_DIR}/pass/${bc}.fastq.gz | samtools view -F 2308 -b | samtools sort -T pass_${bc} -o ${bam_DIR}/${expName}_pass_${bc}.sorted.bam
+# filter reads with flag=2308: unmapped (4) + secondary alignment (256) + supplementary alignment (2048)
+minimap2 -ax map-ont $genomeFile ${bcFastq_DIR}/pass/${bc}.fastq.gz | samtools view -F 2308 -q 30 -b | samtools sort -T pass_${bc} -o ${bam_DIR}/${expName}_pass_${bc}.sorted.bam
 
 echo "index bam file ..."
 samtools index ${bam_DIR}/${expName}_pass_${bc}.sorted.bam

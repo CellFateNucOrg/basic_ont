@@ -3,10 +3,11 @@
 ## Allocate resources
 #SBATCH --time=5-00:00:00
 #SBATCH --partition=all
-#SBATCH --gres=gpu:1
-#SBATCH --mem=96G
-#SBATCH --ntasks=24
-
+##SBATCH --gres=gpu:1
+##SBATCH --mem=96G
+##SBATCH --ntasks=24
+#SBATCH --mem-per-cpu=16G
+#SBATCH --cpus-per-task=4
 
 ## job name
 #SBATCH --job-name="binbarcodes"
