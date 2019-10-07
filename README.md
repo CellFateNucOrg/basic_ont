@@ -45,11 +45,17 @@ conda install -c aleg pycoqc
 
 
 ##############################
-####### minimap
+####### minimap2
 ##############################
 
 curl -L https://github.com/lh3/minimap2/releases/download/v2.17/minimap2-2.17_x64-linux.tar.bz2 | tar -jxvf -./minimap2
 
+
+##############################
+####### samtools 
+##############################
+
+conda install -c bioconda samtools
 
 ##############################
 ####### guppy
