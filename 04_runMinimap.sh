@@ -4,8 +4,8 @@
 #SBATCH --time=1-00:00:00
 #SBATCH --mem-per-cpu=8G
 #SBATCH --array=1-2
-#SBATCH --mail-user=jennifer.semple@izb.unibe.ch
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=jennifer.semple@izb.unibe.ch 
+#SBATCH --mail-type=NONE 
 ## you should submit as many jobs as there are barcodes in barcodesUsed
 ## (don't forget to include unclassfied in barcodesOfInterst in the varSettings.sh file)
 
