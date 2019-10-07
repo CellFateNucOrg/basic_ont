@@ -31,8 +31,8 @@ echo $SLURM_NTASKS
 ##################
 # bin by barcode
 ##################
-cat ${fastq_DIR}/pass/* > ${fastq_DIR}/pass/passed.fastq.gz
-mkdir -p ${bcFastq_DIR}/pass
-deepbinner bin --classes ${classifications} --reads ${fastq_DIR}/pass/passed.fastq.gz --out_dir ${bcfastq_DIR}/pass
-rm ${fastq_DIR}/pass/passed.fastq.gz
+cat ${fastq_DIR}/pass/* > ${fastq_DIR}/passed.fastq.gz
+mkdir -p ${bcfastq_DIR}/pass
+deepbinner bin --classes ${classifications} --reads ${fastq_DIR}//passed.fastq.gz --out_dir ${bcfastq_DIR}/pass
+rm ${fastq_DIR}/passed.fastq.gz
 
