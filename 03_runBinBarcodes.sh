@@ -33,6 +33,6 @@ echo $SLURM_NTASKS
 ##################
 cat ${fastq_DIR}/pass/* > ${fastq_DIR}/passed.fastq.gz
 mkdir -p ${bcfastq_DIR}/pass
-deepbinner bin --classes ${classifications} --reads ${fastq_DIR}//passed.fastq.gz --out_dir ${bcfastq_DIR}/pass
+deepbinner bin --classes ${classifications} --reads ${fastq_DIR}/passed.fastq.gz --out_dir ${bcfastq_DIR}/pass
 rm ${fastq_DIR}/passed.fastq.gz
 
