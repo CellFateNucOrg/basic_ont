@@ -1,13 +1,13 @@
 #! /bin/bash
 
 ## Allocate resources
-#SBATCH --time=5-00:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH --partition=all
-##SBATCH --gres=gpu:1
-##SBATCH --mem=96G
-##SBATCH --ntasks=24
-#SBATCH --mem-per-cpu=16G
-#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:1
+#SBATCH --mem=96G
+#SBATCH --ntasks=24
+##SBATCH --mem-per-cpu=16G
+##SBATCH --cpus-per-task=4
 
 ## job name
 #SBATCH --job-name="binbarcodes"
@@ -26,7 +26,7 @@ echo "Using Deepbinner from:"
 which deepbinner
 classifications=${WORK_DIR}/classifications
 echo $SLURM_NTASKS
-#deepbinner classify --omp_num_threads ${SLURM_NTASKS} --intra_op_parallelism_threads ${SLURM_NTASKS} --inter_op_parallelism_threads 4  --native ${singleFast5_DIR} >  ${classifications}
+deepbinner classify --omp_num_threads ${SLURM_NTASKS} --intra_op_parallelism_threads ${SLURM_NTASKS} --inter_op_parallelism_threads 4  --native ${singleFast5_DIR} >  ${classifications}
 
 ##################
 # bin by barcode

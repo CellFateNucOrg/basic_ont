@@ -1,9 +1,9 @@
 #! /bin/bash
 
 ## Allocate resources
-#SBATCH --time=2-00:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --mem-per-cpu=8G
-#SBATCH --array=1-6
+#SBATCH --array=1-2
 #SBATCH --mail-user=jennifer.semple@izb.unibe.ch
 #SBATCH --mail-type=END,FAIL
 ## you should submit as many jobs as there are barcodes in barcodesUsed

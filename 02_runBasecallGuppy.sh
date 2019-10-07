@@ -4,7 +4,7 @@
 #SBATCH --time=3-00:00:00
 #SBATCH --partition=all
 #SBATCH --gres=gpu:1
-
+#SBATCH --mem=24G
 ## job name
 #SBATCH --job-name="guppy&qc"
 
@@ -23,7 +23,7 @@ echo "working directory is: "${WORK_DIR}
 source ${CONDA_ACTIVATE} BASIC_ONT
 
 mkdir -p ${WORK_DIR}/fastqFiles
-#${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${fastq_DIR} -c ${GUPPY_DIR}/../data/dna_r9.4.1_450bps_hac.cfg --records_per_fastq 200000 --compress_fastq --recursive --qscore_filtering --min_qscore 3 --device auto
+${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${fastq_DIR} -c ${GUPPY_DIR}/../data/dna_r9.4.1_450bps_hac.cfg --records_per_fastq 200000 --compress_fastq --recursive --qscore_filtering --min_qscore 3 --device auto
 #--num_callers
 
 
