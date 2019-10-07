@@ -98,12 +98,12 @@ source ${CONDA_ACTIVATE} BASIC_ONT
 git clone https://github.com/CellFateNucOrg/basic_ont.git scripts/
 ```
 
-* In the scripts directory copy varSettings_example.sh to varSettings.sh, then edit varSettings.sh according to your experiment. This ensures that when you update code from git, your folder-specific settings are not overwritten.
+* In the scripts directory copy __varSettings_example.sh__ to __varSettings.sh__, then edit varSettings.sh according to your experiment. This ensures that when you update code from git, your folder-specific settings are not overwritten.
 * The scripts are numbered according to the order you should run them in:
-- 01_runMultiToSingleFast5.sh to convert multi-fast5 files to single-fast5 files. 
-- 02_runBasecallGuppy.sh basecall single reads with guppy. Also does QC with pycoQC.
-- 03_runBinBarcodes.sh uses deepbinner to bin the barcodes.
-- 04_runMinimap.sh maps the reads by barcode to the genome (defined in varSettings) with minimap2.
+- __01_runMultiToSingleFast5.sh__ to convert multi-fast5 files to single-fast5 files. 
+- __02_runBasecallGuppy.sh__ basecall single reads with guppy. Also does QC with pycoQC.
+- __03_runBinBarcodes.sh__ uses deepbinner to bin the barcodes.
+- __04_runMinimap.sh__ maps the reads by barcode to the genome (defined in varSettings) with minimap2.
 
 The scripts are run on the server with the SBATCH command:
 ```
@@ -112,11 +112,11 @@ sbatch nameOfScript.sh
 
 IMPORTANT NOTE:
 
-When running the mapping script 04_runMinimap.sh you should make sure to:
+When running the mapping script __04_runMinimap.sh__ you should make sure to:
 
-a) list all the barcodes used in the varSettings.sh file
+a) list all the __barcodes used__ in the __varSettings.sh__ file
 
-b) modify the 04_runMinimap.sh script to run as many array jobs as barcodes used. 
+b) modify the __04_runMinimap.sh__ script to run as many array jobs as barcodes used. 
 
 e.g. setting "#SBATCH --array=1-3" in the 04_runMinimap.sh file will run the first three barcodes listed in barcodesUsed, each as an individual job. So if you used barcodes 2 3 and 5, barcodesUsed should be defined in the varSettings.sh file as: barcodesUsed=( barcode02 barcode03 barcode05 ).
 
