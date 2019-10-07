@@ -12,5 +12,6 @@
 source ${CONDA_ACTIVATE} BASIC_ONT
 source ./varSettings.sh
 
+mkdir -p ${singleFast5_DIR}
 multi_to_single_fast5 --input_path ${multiFast5_DIR}/ --save_path ${singleFast5_DIR}/ -t $SLURM_CPUS_PER_TASK --recursive
 

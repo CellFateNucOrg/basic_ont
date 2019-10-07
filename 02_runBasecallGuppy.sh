@@ -32,12 +32,12 @@ ${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${WORK
 #################
 
 
-# create qc output directory
-qcDir=./qc
+# create qc -output directory
+qcDir=${WORK_DIR}/qc
 mkdir -p $qcDir
 
 #https://github.com/a-slide/pycoQC
-pycoQC -f ${fastq_DIR}/sequencing_summary.txt -o ${qcDir}/pycoQC_${expName}_pass.html --title "${expName} passed reads" --min_pass_qual 3
+pycoQC -f ${fastq_DIR}/sequencing_summary.txt -o ${qcDir}/pycoQC_${expName}_pass.html --report-title "${expName} passed reads" --min_pass_qual 3
 
 conda deactivate
 
