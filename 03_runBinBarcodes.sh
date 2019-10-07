@@ -25,7 +25,7 @@ echo "Using Deepbinner from:"
 which deepbinner
 classifications=${WORK_DIR}/classifications
 echo $SLURM_NTASKS_PER_NODE
-deepbinner classify --omp_num_threads ${SLURM_NTASKS} --intra_op_parallelism_threads ${SLURM_NTASKS} --inter_op_parallelism_threads 4  --native ${singleFast5_DIR} >  ${classifications}
+#deepbinner classify --omp_num_threads ${SLURM_NTASKS} --intra_op_parallelism_threads ${SLURM_NTASKS} --inter_op_parallelism_threads 4  --native ${singleFast5_DIR} >  ${classifications}
 
 ##################
 # bin by barcode
