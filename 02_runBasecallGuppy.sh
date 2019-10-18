@@ -22,7 +22,7 @@ source ./varSettings.sh
 echo "working directory is: "${WORK_DIR}
 source ${CONDA_ACTIVATE} BASIC_ONT
 
-mkdir -p ${WORK_DIR}/fastqFiles
+mkdir -p ${fastq_DIR}/
 ${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${fastq_DIR} -c ${GUPPY_DIR}/../data/dna_r9.4.1_450bps_hac.cfg --records_per_fastq 200000 --compress_fastq --recursive --qscore_filtering --min_qscore 3 --device auto
 #--num_callers
 
@@ -33,11 +33,10 @@ ${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${fast
 
 
 # create qc -output directory
-qcDir=${WORK_DIR}/qc
-mkdir -p $qcDir
+mkdir -p $qc_DIR
 
 #https://github.com/a-slide/pycoQC
-pycoQC -f ${fastq_DIR}/sequencing_summary.txt -o ${qcDir}/pycoQC_${expName}_pass.html --report_title "${expName} passed reads" --min_pass_qual 3
+pycoQC -f ${fastq_DIR}/sequencing_summary.txt -o ${qc_Dir}/pycoQC_${expName}_pass.html --report_title "${expName} passed reads" --min_pass_qual 3
 
 conda deactivate
 
