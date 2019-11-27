@@ -7,6 +7,8 @@
 #SBATCH --mem=24G
 ## job name
 #SBATCH --job-name="guppy&qc"
+#SBATCH --mail-user=peter.meister@izb.unibe.ch
+#SBATCH --mail-type=end,fail
 
 ## Script to basecall all fast5 in the folder one level up called singleFast5_DIR (named in varSettings.sh) 
 ## and its recursive directories with Guppy
