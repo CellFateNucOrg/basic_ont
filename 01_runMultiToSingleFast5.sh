@@ -5,6 +5,8 @@
 #SBATCH --partition=all
 #SBATCH --mem-per-cpu=24G
 #SBATCH --cpus-per-task=8
+#SBATCH --mail-user=peter.meister@izb.unibe.ch
+#SBATCH --mail-type=end,fail
 
 ## job name
 #SBATCH --job-name="multi2single_fast5"
