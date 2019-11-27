@@ -8,6 +8,8 @@
 #SBATCH --ntasks=24
 ##SBATCH --mem-per-cpu=16G
 ##SBATCH --cpus-per-task=4
+#SBATCH --mail-user=peter.meister@izb.unibe.ch
+#SBATCH --mail-type=end,fail
 
 ## job name
 #SBATCH --job-name="binbarcodes"
