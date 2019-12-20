@@ -61,7 +61,7 @@ conda install -c bioconda samtools
 ####### guppy
 ##############################
 
-GUPPY_VERSION="3.1.5"
+GUPPY_VERSION="3.4.3"
 
 rm -rf ./ont-guppy
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_${GUPPY_VERSION}_linux64.tar.gz
@@ -74,11 +74,32 @@ echo "export GUPPY_DIR=${SOFTWARE_DIR}/ont-guppy/bin" >> ~/.bashrc
 ####### deepbinner
 ##############################
 
+** no longer necessary**
 pip install tensorflow-gpu==1.14
 
 rm -rf ./Deepbinner
 git clone https://github.com/rrwick/Deepbinner.git
 pip install ./Deepbinner
+
+
+##############################
+####### R
+##############################
+```
+Rinstalled=`which R`
+if [ -z ${Rinstalled} ] 
+then
+  conda install -c r r-base r-essentials
+  conda install -c bioconda bioconductor-biocinstaller
+else
+  echo ""
+  echo "Detected existing R installation "${Rinstalled}
+fi
+```
+Any packages required need to be installed manually by starting R and installing them on the command line.
+
+
+
 ```
 To activate the envinronment interactively you can type:
 ```
@@ -104,6 +125,7 @@ git clone https://github.com/CellFateNucOrg/basic_ont.git scripts/
 - __02_runBasecallGuppy.sh__ basecall single reads with guppy. Also does QC with pycoQC.
 - __03_runBinBarcodes.sh__ uses deepbinner to bin the barcodes.
 - __04_runMinimap.sh__ maps the reads by barcode to the genome (defined in varSettings) with minimap2.
+- __05_runDamIdFiltering.sh__ filters the reads from the bam file (this runs the DamID_Filtering.R script).
 
 The scripts are run on the server with the SBATCH command:
 ```
