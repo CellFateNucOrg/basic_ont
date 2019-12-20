@@ -3,9 +3,9 @@
 ## Allocate resources
 #SBATCH --time=2-00:00:00
 #SBATCH --mem-per-cpu=8G
-#SBATCH --array=1
-##SBATCH --mail-user=peter.meister@izb.unibe.ch 
-##SBATCH --mail-type=end,fail 
+#SBATCH --array=1-12
+#SBATCH --mail-user=peter.meister@izb.unibe.ch 
+#SBATCH --mail-type=end,fail 
 ## you should submit as many jobs as there are barcodes in barcodesUsed
 ## (don't forget to include unclassfied in barcodesOfInterst in the varSettings.sh file)
 
@@ -29,8 +29,8 @@ bc=${barcodesUsed[$i]} # barcode
 
 echo "filtering DamID reads..."
 echo "working folder is: " ${WORK_DIR}
-echo "barcode folder is: " $bam_DIR/${bc}
+echo "barcode file is: " $bam_DIR/${expName}_pass_${bc}.sorted.bam
 
-Rscript DamID_filtering.R ${WORK_DIR} ${bam_DIR}/${bc}
+Rscript DamID_filtering.R ${WORK_DIR} $bam_DIR/${expName}_pass_${bc}.sorted.bam
 
 
