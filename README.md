@@ -98,8 +98,6 @@ fi
 
 Any packages required need to be installed manually by starting R and installing them on the command line.
 
-
-```
 To activate the envinronment interactively you can type:
 ```
 conda activate BASIC_ONT
