@@ -22,6 +22,14 @@ library(GenomicAlignments)
 library(rtracklayer)
 genome = Celegans
 re.site= "GATC"
+args=commandArgs(trailingOnly=TRUE)
+
+
+
+workDir=args[1]
+print(paste0("Working directory is: ", workDir))
+barcodeFolder=args[2]
+print(paste0("barcode Folder is: ", barcodeFolder))
 
 ########################################################################
 all.GATC <- vmatchPattern(re.site, genome)
@@ -37,7 +45,7 @@ damid_filtering <- function(GAlfile)
   {GAl <- readGAlignments(GAlfile, use.names=TRUE)
   GAl.gr <- granges(GAl)
   cvg_original <- coverage(GAl.gr)
-  export.bw(cvg_original,paste0(gsub(".bam","_coverage.bw",GAlfile)))
+  export.bw(cvg_original,paste0(gsub(".bam$","_coverage.bw$",GAlfile)))
   GAl.gr_ext <- GAl.gr
   start(GAl.gr_ext)<- start(GAl.gr)-8
   end(GAl.gr_ext)<- end(GAl.gr)+8
@@ -65,7 +73,7 @@ damid_filtering <- function(GAlfile)
   #                               return(x)})
   #GAl.gr_damid_cropped <- unlist(as(GAl.gr_damid_cropped, "GRangesList"))
   GAl.gr_damid_cropped <- resize(GAl.gr_damid_cropped,width=width(GAl.gr_damid_cropped)-4, fix="center",use.names=TRUE)
-  export(GAl.gr_damid_cropped,paste0("DamID_filtered/",gsub(".bam","_damid.bam",GAlfile)))
+  export(GAl.gr_damid_cropped,paste0(workDir,"/DamID_filtered/",gsub(".bam","_damid.bam",GAlfile)))
   #export(GAl[damid_reads],paste0("DamID_filtered/",gsub(".bam","_damid.bam",GAlfile)))
   GAl.gr_damid_left_50 <- resize(GAl.gr_damid_cropped, width=50, fix="start",use.names=TRUE,ignore.strand=TRUE)
   strand(GAl.gr_damid_left_50) <- "+" 
@@ -73,19 +81,26 @@ damid_filtering <- function(GAlfile)
   GAl.gr_damid_right_50 <- resize(GAl.gr_damid_cropped, width=50, fix="end",use.names=TRUE,ignore.strand=TRUE)
   strand(GAl.gr_damid_right_50) <- "-" 
   names(GAl.gr_damid_right_50) <- paste0(names(GAl.gr_damid_cropped),"_right")
-  export(c(GAl.gr_damid_left_50, GAl.gr_damid_right_50),paste0("Short_reads/",gsub(".bam","_damid_cropped50.bam",GAlfile)))
+  export(c(GAl.gr_damid_left_50, GAl.gr_damid_right_50),paste0(workDir,"/Short_reads/",gsub(".bam","_damid_cropped50.bam",GAlfile)))
     #coverage
   cvg <- coverage(GAl.gr_damid)
-  export.bw(cvg,paste0("DamID_filtered/",gsub(".bam","_damid_coverage.bw",GAlfile)))
+  export.bw(cvg,paste0(workDir,"/DamID_filtered/",gsub(".bam","_damid_coverage.bw",GAlfile)))
 }
 
-setwd("F:/Peter/Intestine_DamID_2/")
-dir.create("DamID_filtered")
-dir.create("Short_reads")
-file.names <- list.files(pattern="*.bam$")
+#setwd("F:/Peter/Intestine_DamID_2/")
+if (! dir.exists(paste0(workDir,"/DamID_filtered"))) {
+	dir.create(paste0(workDir,"/DamID_filtered"))
+}
+if (! dir.exists(paste0(workDir,"/Short_reads"))) {
+dir.create(paste0(workDir,"/Short_reads"))
+}
+
+file.names <- list.files(path=barcodeFolder,pattern=".*bam$") # in R a . refers to any character and * is a quantifier of how many times it should match any character
 file.names
-for (f in file.names) 
-{damid_filtering(f)}
+for (f in file.names) {
+	print(f)
+	damid_filtering(f)
+}
 
 
 

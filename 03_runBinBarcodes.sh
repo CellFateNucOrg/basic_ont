@@ -24,17 +24,10 @@ echo ${bcfastq_DIR}" is my bcFastq folder"
 ##################
 # classify reads by barcode
 ##################
-echo "Using Deepbinner from:"
-which deepbinner
-classifications=${WORK_DIR}/classifications
+echo "Using guppy-barcoder"
 echo $SLURM_NTASKS
-deepbinner classify --omp_num_threads ${SLURM_NTASKS} --intra_op_parallelism_threads ${SLURM_NTASKS} --inter_op_parallelism_threads 4  --native ${singleFast5_DIR} >  ${classifications}
+mkdir -p ${bcfastq_DIR}
+${GUPPY_DIR}/guppy_barcoder -i ${fastq_DIR} -s ${bcfastq_DIR} --recursive -t $SLURM_NTASKS -q 40000 --compress_fastq -x auto --barcode_kits "EXP-NBD104"
 
-##################
-# bin by barcode
-##################
-cat ${fastq_DIR}/pass/* > ${fastq_DIR}/passed.fastq.gz
-mkdir -p ${bcfastq_DIR}/pass
-deepbinner bin --classes ${classifications} --reads ${fastq_DIR}/passed.fastq.gz --out_dir ${bcfastq_DIR}/pass
-rm ${fastq_DIR}/passed.fastq.gz
+
 

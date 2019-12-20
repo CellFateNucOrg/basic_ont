@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # name of experiment
-expName=XXX_DamID
+expName=Intestine_Muscle_
 
 # gets the directory name one level above where the script is
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../ && pwd )"
@@ -18,4 +18,4 @@ bam_DIR=${WORK_DIR}/bam
 genomeFile=/mnt/imaging.data/pmeister/ce11/genome.fa
 
 # list of barcodes that were used in this run
-barcodesUsed=( barcode01 barcode03 barcode05 barcode07 barcode08 barcode10 )
+barcodesUsed=( barcode01 barcode02 barcode03 barcode04 barcode05 barcode06 barcode07 barcode08 barcode09 barcode10 barcode11 barcode12 )
