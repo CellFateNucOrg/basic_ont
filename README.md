@@ -97,6 +97,13 @@ fi
 ```
 
 Any packages required need to be installed manually by starting R and installing them on the command line.
+```
+R
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c("Biostrings", "GenomicRanges", "BSgenome.Celegans.UCSC.ce11", "Rsamtools", "GenomicAlignments", "rtracklayer"))
+```
+
 
 To activate the envinronment interactively you can type:
 ```
