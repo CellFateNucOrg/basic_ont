@@ -85,7 +85,6 @@ pip install ./Deepbinner
 ##############################
 ####### R
 ##############################
-```
 Rinstalled=`which R`
 if [ -z ${Rinstalled} ] 
 then
@@ -96,8 +95,8 @@ else
   echo "Detected existing R installation "${Rinstalled}
 fi
 ```
-Any packages required need to be installed manually by starting R and installing them on the command line.
 
+Any packages required need to be installed manually by starting R and installing them on the command line.
 
 
 ```
