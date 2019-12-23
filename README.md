@@ -137,11 +137,11 @@ sbatch nameOfScript.sh
 
 IMPORTANT NOTE:
 
-When running the mapping script __04_runMinimap.sh__ you should make sure to:
+When running the mapping script __03_runMinimap.sh__ and __04_runDamIdFiltering.sh__ you should make sure to:
 
 a) list all the __barcodes used__ in the __varSettings.sh__ file
 
-b) modify the __04_runMinimap.sh__ script to run as many array jobs as barcodes used. 
+b) modify the __03_runMinimap.sh__ and __04_runDamIdFiltering.sh__ scripts to run as many array jobs as barcodes used. 
 
 e.g. setting "#SBATCH --array=1-3" in the 04_runMinimap.sh file will run the first three barcodes listed in barcodesUsed, each as an individual job. So if you used barcodes 2 3 and 5, barcodesUsed should be defined in the varSettings.sh file as: barcodesUsed=( barcode02 barcode03 barcode05 ).
 
