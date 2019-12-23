@@ -117,7 +117,7 @@ source ${CONDA_ACTIVATE} BASIC_ONT
 # Analysing data
 * Create a folder with the name of your experiment. 
 * Move inside this directory. 
-* Place all the fast5 files in a folder called multi_fast5, or if you have single fast5s, put them in a folder called single_fast5. (Note: You can use other names for these folders but then you have to change them in the varSettings.sh file).
+* Place all the fast5 files in a folder called multi_fast5, (Note: You can use another name for these folders but then you have to change them in the varSettings.sh file).
 * clone the basic_ont git repository into a folder called "scripts":
 ```
 git clone https://github.com/CellFateNucOrg/basic_ont.git scripts/
