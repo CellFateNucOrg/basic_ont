@@ -7,8 +7,7 @@ expName=Intestine_Muscle_
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../ && pwd )"
 
 # default directory names. Can be changed, but keep consistent within an analysis
-multiFast5_DIR=${WORK_DIR}/multi_fast5
-singleFast5_DIR=${WORK_DIR}/single_fast5
+multiFast5_DIR=${WORK_DIR}/fast5
 fastq_DIR=${WORK_DIR}/fastq	
 qc_DIR=${WORK_DIR}/qc
 bcfastq_DIR=${WORK_DIR}/bcfastq

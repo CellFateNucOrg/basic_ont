@@ -25,7 +25,7 @@ echo "working directory is: "${WORK_DIR}
 source ${CONDA_ACTIVATE} BASIC_ONT
 
 mkdir -p ${fastq_DIR}/
-${GUPPY_DIR}/guppy_basecaller --input_path ${singleFast5_DIR} --save_path ${fastq_DIR} -c ${GUPPY_DIR}/../data/dna_r9.4.1_450bps_hac.cfg --records_per_fastq 200000 --compress_fastq --recursive --qscore_filtering --min_qscore 3 --device auto
+${GUPPY_DIR}/guppy_basecaller --input_path ${multiFast5_DIR} --save_path ${fastq_DIR} -c ${GUPPY_DIR}/../data/dna_r9.4.1_450bps_hac.cfg --records_per_fastq 200000 --compress_fastq --recursive --qscore_filtering --min_qscore 3 --device auto
 #--num_callers
 
 

@@ -31,7 +31,7 @@ source ${CONDA_ACTIVATE} BASIC_ONT
 ##############################
 ####### multi_to_single_fast5 
 ##############################
-
+** no longer necessary **
 git clone https://github.com/nanoporetech/ont_fast5_api
 cd ont_fast5_api
 python setup.py install
@@ -125,11 +125,10 @@ git clone https://github.com/CellFateNucOrg/basic_ont.git scripts/
 
 * In the scripts directory copy __varSettings_example.sh__ to __varSettings.sh__, then edit varSettings.sh according to your experiment. This ensures that when you update code from git, your folder-specific settings are not overwritten.
 * The scripts are numbered according to the order you should run them in:
-- __01_runMultiToSingleFast5.sh__ to convert multi-fast5 files to single-fast5 files. 
-- __02_runBasecallGuppy.sh__ basecall single reads with guppy. Also does QC with pycoQC.
-- __03_runBinBarcodes.sh__ uses deepbinner to bin the barcodes.
-- __04_runMinimap.sh__ maps the reads by barcode to the genome (defined in varSettings) with minimap2.
-- __05_runDamIdFiltering.sh__ filters the reads from the bam file (this runs the DamID_Filtering.R script).
+- __01_runBasecallGuppy.sh__ basecall single reads with guppy. Also does QC with pycoQC.
+- __02_runBinBarcodes.sh__ uses deepbinner to bin the barcodes.
+- __03_runMinimap.sh__ maps the reads by barcode to the genome (defined in varSettings) with minimap2.
+- __04_runDamIdFiltering.sh__ filters the reads from the bam file (this runs the DamID_Filtering.R script).
 
 The scripts are run on the server with the SBATCH command:
 ```
