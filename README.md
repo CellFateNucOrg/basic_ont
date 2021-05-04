@@ -28,14 +28,6 @@ PYTHON_VERSION="3.6"
 conda create -n BASIC_ONT python=${PYTHON_VERSION}
 source ${CONDA_ACTIVATE} BASIC_ONT
 
-##############################
-####### multi_to_single_fast5 
-##############################
-** no longer necessary **
-git clone https://github.com/nanoporetech/ont_fast5_api
-cd ont_fast5_api
-python setup.py install
-
 
 ##############################
 ####### pycoQC
@@ -69,17 +61,6 @@ tar -xzvf ont-guppy_${GUPPY_VERSION}_linux64.tar.gz
 
 echo "export GUPPY_DIR=${SOFTWARE_DIR}/ont-guppy/bin" >> ~/.bashrc
 
-
-##############################
-####### deepbinner
-##############################
-
-** no longer necessary**
-pip install tensorflow-gpu==1.14
-
-rm -rf ./Deepbinner
-git clone https://github.com/rrwick/Deepbinner.git
-pip install ./Deepbinner
 
 
 ##############################
